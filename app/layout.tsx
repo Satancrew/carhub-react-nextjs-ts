@@ -1,6 +1,6 @@
+import { Footer, Navbar } from '@/components';
 import type { Metadata } from 'next';
 import './globals.css';
-import { Navbar, Footer } from '@/components';
 
 export const metadata: Metadata = {
   title: 'Car Hub',
@@ -14,6 +14,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" sizes='any' />
+      </head>
       <body className="relative">
         <Navbar />
         {children}
