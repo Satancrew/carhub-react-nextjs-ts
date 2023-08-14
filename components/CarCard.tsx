@@ -2,8 +2,8 @@
 import { CarProps } from '@/types';
 import { calculateCarRent } from '@/utils';
 import Image from 'next/image';
-import { CustomButton } from '.';
 import { useState } from 'react';
+import { CarDetails, CustomButton } from '.';
 
 interface CarCardProps {
   car: CarProps;
@@ -11,7 +11,7 @@ interface CarCardProps {
 
 const CarCard = ({ car }: CarCardProps) => {
   const { city_mpg, year, make, model, transmission, drive } = car;
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const carRent = calculateCarRent(city_mpg, year);
   return (
@@ -54,12 +54,7 @@ const CarCard = ({ car }: CarCardProps) => {
             <p className="text-[14px]">{drive.toUpperCase()}</p>
           </div>
           <div className="flex flex-col justify-center items-center gap-2">
-            <Image
-              src="/gas.svg"
-              width={20}
-              height={20}
-              alt="gas"
-            />
+            <Image src="/gas.svg" width={20} height={20} alt="gas" />
             <p className="text-[14px]">{city_mpg} MPG</p>
           </div>
         </div>
@@ -73,6 +68,7 @@ const CarCard = ({ car }: CarCardProps) => {
           />
         </div>
       </div>
+      <CarDetails isOpen={isOpen} closeModal={() => setIsOpen(false)} car={car} />
     </div>
   );
 };
